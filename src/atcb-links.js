@@ -491,6 +491,11 @@ function atcb_generate_ical(host, data, subEvent = 'all', keyboardTrigger = fals
     ics_lines.push('STATUS:' + data.dates[`${i}`].status);
     ics_lines.push('CREATED:' + data.created);
     ics_lines.push('LAST-MODIFIED:' + data.updated);
+    ics_lines.push('BEGIN:VALARM');
+    ics_lines.push('ACTION:DISPLAY');
+    ics_lines.push('DESCRIPTION:REMINDER');
+    ics_lines.push('TRIGGER:-PT15M'); // Set the reminder to 15 minutes before the event
+    ics_lines.push('END:VALARM');
     ics_lines.push('END:VEVENT');
   }
   ics_lines.push('END:VCALENDAR');
